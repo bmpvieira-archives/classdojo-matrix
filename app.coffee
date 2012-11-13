@@ -4,6 +4,7 @@ child = require 'child_process'
 
 matrix_walk = require './matrix_walk'
 worker = child.fork './worker' # used in cases of large matrices to reduce blocking
+port = process.argv[2] or process.env.PORT or 3000
 
 http.createServer((req, res) ->
   if req.method is 'POST'
@@ -22,6 +23,4 @@ http.createServer((req, res) ->
       worker.on 'message', (message) ->
         if message[0] is id
           res.end message[1].toString()
-).listen(3000)
-
-
+).listen port
