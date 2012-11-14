@@ -36,7 +36,7 @@ module.exports =
       for i in [0..step]
         if i is 0 # x is still bottom x
           recursion_current_x = current_x #
-        else # adjust x for direction previsously taken
+        else # adjust x for direction previously taken
           recursion_current_x = recursion_current_x - directions[step-i]
         range = getRange recursion_current_x, step-i
         if step-i isnt 1 # recursion hasn't reached top of matrix
